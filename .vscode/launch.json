@@ -9,9 +9,12 @@
             "type": "php",
             "request": "launch",
             "port": 9003,
-            "pathMappings": {
-                "/": "${workspaceRoot}"
-            }
+            
+            "serverReadyAction":{
+                "action": "openExternally",
+                "pattern": "Xdebug on port ([0-9]+)",
+                "uriFormat": "http://localhost:8888/?xdebug=%s"
+            }            
         },
         {
             "name": "Launch currently open script",
@@ -38,9 +41,8 @@
                 "-S",
                 "localhost:0"
             ],
-            "program": "${file}",
+            "program": "",
             "cwd": "${workspaceRoot}",
-            // "cwd": "${fileDirname}",
             "port": 9003,
             "serverReadyAction": {
                 "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started",
